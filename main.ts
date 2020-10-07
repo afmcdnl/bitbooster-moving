@@ -1,0 +1,21 @@
+input.onButtonPressed(Button.A, function () {
+    pins.digitalWritePin(DigitalPin.P1, 1)
+    pins.analogWritePin(AnalogPin.P15, 1023)
+    pins.digitalWritePin(DigitalPin.P8, 1)
+    pins.analogWritePin(AnalogPin.P16, 1023)
+})
+input.onButtonPressed(Button.B, function () {
+    pins.digitalWritePin(DigitalPin.P1, 1)
+    pins.analogWritePin(AnalogPin.P15, 0)
+    pins.digitalWritePin(DigitalPin.P8, 1)
+    pins.analogWritePin(AnalogPin.P16, 0)
+})
+basic.showIcon(IconNames.Yes)
+let strip = neopixel.create(DigitalPin.P2, 10, NeoPixelMode.RGB)
+basic.forever(function () {
+    strip.showRainbow(1, 360)
+    strip.setBrightness(15)
+    strip.clear()
+    basic.pause(100)
+    strip.rotate(1)
+})
